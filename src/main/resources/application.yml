@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: api-platform
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/api_platform?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQLDialect
+
+server:
+  port: 8080
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: always
+
+logging:
+  level:
+    com.vuong.api_platform: DEBUG
+    org.springframework.web: INFO
+    org.hibernate.SQL: DEBUG
